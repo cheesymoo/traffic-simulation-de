@@ -54,6 +54,20 @@ function handleChangedPriority(index){
 		" respectRightPrio=",respectRightPrio);
 }
 
+var isMuted=true;
+function toggleMute(){
+
+    if(isMuted){
+        isMuted=false;
+        dtm.music().unmute();
+        document.getElementById("muteToggle").src="figs/mute.svg"
+    } else {
+        isMuted=true;
+        dtm.music().mute();
+        document.getElementById("muteToggle").src="figs/speaker.svg";
+    }
+}
+
 
 // roundabout: change OD options
 // options={straight,right,left,all}
