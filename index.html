@@ -41,6 +41,9 @@
 
 <!-- redirects to other scenarios, defines myRedirectX -->
 <script src="js/redirect.js" type="text/javascript"></script>
+<div id="muteToggleDiv"><img id="muteToggle" width="100%"
+    src="figs/mute.svg" onclick="toggleMute()"/>
+</div>
 
 <div id="startStopDiv"><img id="startStop" width="100%" 
      src="figs/buttonStop3_small.png" onclick="myStartStopFunction()"/>
@@ -296,9 +299,11 @@
 <!-- specific scripts; position below any simulation elements ! -->
 <!-- ########################################################## -->
 
+<script src="js/dtm.js" type="text/javascript"></script>
 <script src="js/control_gui.js"></script> 
 <script src="js/timeView.js" type="text/javascript"></script>
 <script src="js/media.js" type="text/javascript"></script>
+
 
 <script src="js/canvas_gui.js"></script> 
 <script src="js/vehicleDepot.js"></script> 

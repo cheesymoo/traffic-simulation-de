@@ -198,6 +198,14 @@ ul.noindent {   /* then in html <ul class="noindent">...</ul>*/
   z-index: 2; /* the higher the integer, the more on top */
 }
 
+#muteToggleDiv{ /*landscape*/
+  position: absolute;
+  top: 18vmin;
+  height: 8vmin;
+  left: 80vmin;
+  width: 8vmin;
+  z-index: 2; /* the higher the integer, the more on top */
+}
 
 
 /* (3a) main slider for deviation uses
