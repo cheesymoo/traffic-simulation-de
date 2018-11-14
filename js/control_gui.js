@@ -59,12 +59,10 @@ function toggleMute(){
 
     if(isMuted){
         isMuted=false;
-        dtm.music().unmute();
-        document.getElementById("muteToggle").src="figs/mute.svg"
+        document.getElementById("muteToggle").src="figs/speaker.svg"
     } else {
         isMuted=true;
-        dtm.music().mute();
-        document.getElementById("muteToggle").src="figs/speaker.svg";
+        document.getElementById("muteToggle").src="figs/mute.svg";
     }
 }
 
