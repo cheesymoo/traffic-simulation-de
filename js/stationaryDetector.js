@@ -41,12 +41,19 @@ function stationaryDetector(road,u,dtAggr){
 	? this.road.findLeaderAt(this.u) : this.road.findFollowerAt(this.u);
 }
 
-
 stationaryDetector.prototype.update=function(time,dt){
     var vehNear=(this.u<0.5*this.road.roadLen) 
 	? this.road.findLeaderAt(this.u) : this.road.findFollowerAt(this.u);
+    var noise = dtm.random(44100).range(-1, 1);
+    var env = dtm.data(0,0.2,0).line(10,1000);
     if(vehNear.id != this.vehNearOld.id){
         // if desired, add single-vehicle data record here
+        var panPos = -1 + ((vehNear.lane / this.nLanes) * 2)
+        var speedData = dtm.data(vehNear.speed);
+        if (!isMuted) {
+            dtm.music().play().note(vehNear.speed * 7).pan(panPos).for(3/(vehNear.speed + 0.2));
+            //dtm.music().wave(noise).freq(1).amp(env).play().for(0.2).lpf(this.vehCount/this.dtAggr, this.speedSum/this.vehCount);
+        }
 	if(false){
 	    console.log("stationaryDetector.update: new single-veh",
 			" t=",time," lane=",i," vehID=",vehNear.id);
