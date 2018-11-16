@@ -109,7 +109,7 @@ vehicle.prototype.isRegularVeh=function(){
     return (this.isPerturbed()||(this.id>=200))&&(this.type !== "obstacle");
 } 
 
-var triangle = dtm.data(-0.5, 0.5, -0.5).linear(1000);
+var triangle = dtm.data(-1, 1, -1).linear(1000);
 var square = dtm.data(-1,1);
 var sine = dtm.sine();
 var sawtooth = dtm.data(-1, 1).linear(1000);

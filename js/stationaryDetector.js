@@ -58,7 +58,7 @@ stationaryDetector.prototype.update=function(time,dt){
         var speedData = dtm.data(vehNear.speed);
 	var panEnv = dtm.line(len*sr, -1, 1);
         if (!isMuted) {
-            dtm.music().play().note(note).pan(panEnv).for(len).amp(env);
+            dtm.music().play().note(note).wave(waves[global_wave]).pan(panEnv).lpf(audio3, 3).for(len).amp(env);
             //dtm.music().wave(noise).freq(1).amp(env).play().for(0.2).lpf(this.vehCount/this.dtAggr, this.speedSum/this.vehCount);
         }
 	if(false){
