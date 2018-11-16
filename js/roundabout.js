@@ -774,12 +774,14 @@ function drawSim() {
     for(var iveh=0; iveh<mainroad.veh.length; iveh++){
 	mainroad.veh[iveh].fracLaneOptical=0; // lower than default 1 [lane]
 	mainroad.veh[iveh].dt_LC=10; // sufftly long for special traj road.drawVehGen
+        mainroad.veh[iveh].sonify();
     }
 
     for(var i=1; i<arm.length; i+=2){
 	for(var iveh=0; iveh<arm[i].veh.length; iveh++){
 	    arm[i].veh[iveh].fracLaneOptical=0;
 	    arm[i].veh[iveh].dt_LC=2;
+        arm[i].veh[iveh].sonify();
 	}
     }
 

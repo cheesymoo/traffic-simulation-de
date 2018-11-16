@@ -110,7 +110,8 @@ vehicle.prototype.isRegularVeh=function(){
 } 
 
 vehicle.prototype.sonify=function(){
+    var note = this.speed * 36;
     if (!isMuted) {
-        dtm.music().play().for(0.1);
+        dtm.music().note(note).play().for(0.1);
     }
 }
