@@ -2739,10 +2739,10 @@ road.prototype.mergeDiverge=function(newRoad,offset,uBegin,uEnd,
     //(4) if success, do the actual merging!
 
     if(success){// do the actual merging 
-
         //originVehicles[iMerge]=veh[iMerge+this.iTargetFirst] 
 
-	var iOrig=iMerge+this.iTargetFirst;
+	    var iOrig=iMerge+this.iTargetFirst;
+        this.veh[iOrig].mergeSonify();
 	if(false){
 	//if(true){
 	    console.log("Actual merging: merging origin vehicle "+iOrig

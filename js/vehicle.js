@@ -114,10 +114,24 @@ var square = dtm.data(-1,1);
 var sine = dtm.sine();
 var sawtooth = dtm.data(-1, 1).linear(1000);
 var waves = [triangle, square, sine, sawtooth];
+var env = dtm.data(0,0.2,0).line(10,1000);
 vehicle.prototype.sonify=function(){
-    var note = this.speed * audio2;
-    var cutoff = audio3;
     if (!isMuted) {
-        dtm.music().wave(waves[global_wave]).note(note).play().lpf(cutoff, 1).for(0.1);
+        var note = this.speed * audio2;
+        var cutoff = audio3;
+        dtm.music().wave(waves[global_wave]).note(note).play().lpf(cutoff, 1).for(0.1).amp(env);
+    }
+}
+
+vehicle.prototype.mergeSonify=function(){
+    if (!isMuted) {
+        var note = this.speed * audio2;
+        if (note < 20) {
+            note+=20;
+        } else if (note > 60) {
+            note = 30 + (Math.random() * 10);
+        }
+        var cutoff = audio3;
+        dtm.music().note(note).wave(waves[global_wave]).play().for(0.3).amp(env);
     }
 }
