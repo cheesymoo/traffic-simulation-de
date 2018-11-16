@@ -480,6 +480,14 @@ ul.noindent {   /* then in html <ul class="noindent">...</ul>*/
   z-index: 2; /* the higher the integer, the more on top */
 }
 
+#muteToggleDiv{
+  position: absolute;
+  top: 10vmin;
+  height: 8vmin;
+  left: 93vmin;
+  width: 8vmin;
+  z-index: 2; /* the higher the integer, the more on top */
+}
 /* (2d) portrait: add/subtract one lane: just to the left of start/stop button */
 
 #lanePlusDiv{
