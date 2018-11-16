@@ -109,9 +109,15 @@ vehicle.prototype.isRegularVeh=function(){
     return (this.isPerturbed()||(this.id>=200))&&(this.type !== "obstacle");
 } 
 
+var triangle = dtm.data(-0.5, 0.5, -0.5).linear(1000);
+var square = dtm.data(-1,1);
+var sine = dtm.sine();
+var sawtooth = dtm.data(-1, 1).linear(1000);
+var waves = [triangle, square, sine, sawtooth];
 vehicle.prototype.sonify=function(){
     var note = this.speed * audio2;
+    var cutoff = audio3;
     if (!isMuted) {
-        dtm.music().note(note).play().for(0.1);
+        dtm.music().wave(waves[global_wave]).note(note).play().lpf(cutoff, 1).for(0.1);
     }
 }

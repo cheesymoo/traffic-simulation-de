@@ -829,7 +829,7 @@ else{
 }
 
 // Audio parameter 3
-var audio3Init=30;
+var audio3Init=3000;
 var audio3=audio3Init;
 var slider_audio3, slider_audio3VAL;
 if(document.getElementById("slider_audio3")===null) 
@@ -841,11 +841,24 @@ else{
 	=document.getElementById("slider_audio3VAL");
     slider_audio3.value=audio3Init;
     slider_audio3VAL.innerHTML
-	=audio3Init+" m/s<sup>2</sup>";
+	=audio3Init+" Hz";
 
     slider_audio3.oninput = function() {
-        slider_audio3VAL.innerHTML = this.value+" m/s<sup>2</sup>";
+        slider_audio3VAL.innerHTML = this.value+" Hz";
         audio3=parseFloat(this.value);
+    }
+}
+
+var select_wave;
+var global_wave=0;
+if(document.getElementById("select_wave")===null)
+    console.log("No wave selector");
+else {
+    select_audio=document.getElementById("select_wave");
+    select_audio.value=global_wave;
+
+    select_audio.oninput = function() {
+        global_wave=this.value;
     }
 }
 //#########################################################

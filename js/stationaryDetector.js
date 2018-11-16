@@ -54,8 +54,6 @@ stationaryDetector.prototype.update=function(time,dt){
         var lowestNote = audio1 ? audio1 : 15;
         var note = vehNear.speed * 3.7 + audio1; // scale this better
         var len = 5/(vehNear.speed+0.1); // either calculate better, or turn off last note when new car arrives
-        console.log("len", len);
-        console.log("speed", vehNear.speed);
 	var env = dtm.data(0, 0.2, 0.2, 0).line(sr*len/4,sr*len/4,sr*len/4,sr*len/4);
         var speedData = dtm.data(vehNear.speed);
 	var panEnv = dtm.line(len*sr, -1, 1);

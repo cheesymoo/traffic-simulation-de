@@ -262,10 +262,21 @@
 </tr>
 
 <tr>
-  <td>Audio Param 3</td>
+  <td>Cutoff Frequency</td>
   <td> <input id="slider_audio3" type="range"
-              min="0.6" max="3" step="0.1"></td>
+              min="100" max="8000" step="10"></td>
   <td> <div id="slider_audio3VAL"></div> </td>
+</tr>
+<tr>
+  <td>Waveform</td>
+  <td>
+    <select id="select_wave">
+      <option value="0">Sine</option>
+      <option value="1">Triangle</option>
+      <option value="2">Square</option>
+      <option value="3">Sawtooth</option>
+    </select>
+  </td>
 </tr>
 </table>
 <!-- ############################################## -->
