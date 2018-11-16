@@ -342,7 +342,7 @@ function toggleTruckOvertakingBan(){
 
 //#############################################
 // sliders
-// names "slider_timewarp" etc defined in html file 
+// names "slider_timewarp" etc defined in html file
 // and formatted in sliders.css
 //#############################################
 
@@ -781,13 +781,82 @@ else{
     }
 }
 
+//#########################################################
+// Sonification Sliders
+//#########################################################
+// Audio parameter 1
+var audio1Init = 30;
+var audio1=audio1Init;
+var slider_audio1, slider_audio1VAL;
+if(document.getElementById("slider_audio1")===null) 
+    console.log("no  audio1 slider");
+else{
+    slider_audio1
+	=document.getElementById("slider_audio1");
+    slider_audio1VAL
+	=document.getElementById("slider_audio1VAL");
+    slider_audio1.value=audio1Init;
+    slider_audio1VAL.innerHTML
+	=audio1Init+" Hz";
 
+    slider_audio1.oninput = function() {
+        var displayVal = dtm.data(this.value).mtof().val[0];
+        slider_audio1VAL.innerHTML = truncate(displayVal, 1)+" Hz";
+        audio1=parseFloat(this.value);
+    }
+}
 
+// Audio parameter 2
+var audio2Init=30;
+var audio2=audio2Init;
+var slider_audio2, slider_audio2VAL;
+if(document.getElementById("slider_audio2")===null)
+    console.log("no  audio2 slider");
+else{
+    slider_audio2
+	=document.getElementById("slider_audio2");
+    slider_audio2VAL
+	=document.getElementById("slider_audio2VAL");
+    slider_audio2.value=audio2Init;
+    slider_audio2VAL.innerHTML
+	=audio2Init+" Hz";
 
+    slider_audio2.oninput = function() {
+        var displayVal = dtm.data(this.value).mtof().val[0];
+        slider_audio2VAL.innerHTML = truncate(displayVal, 1)+" Hz";
+        audio2=parseFloat(this.value);
+    }
+}
+
+// Audio parameter 3
+var audio3Init=30;
+var audio3=audio3Init;
+var slider_audio3, slider_audio3VAL;
+if(document.getElementById("slider_audio3")===null) 
+    console.log("no  audio3 slider");
+else{
+    slider_audio3
+	=document.getElementById("slider_audio3");
+    slider_audio3VAL
+	=document.getElementById("slider_audio3VAL");
+    slider_audio3.value=audio3Init;
+    slider_audio3VAL.innerHTML
+	=audio3Init+" m/s<sup>2</sup>";
+
+    slider_audio3.oninput = function() {
+        slider_audio3VAL.innerHTML = this.value+" m/s<sup>2</sup>";
+        audio3=parseFloat(this.value);
+    }
+}
 //#########################################################
 // helper function
 //#########################################################
 
+// truncate floating point values
+function truncate(num, places) {
+    var shift = Math.pow(10, places);
+    return ((num*shift) | 0) / shift;
+}
 
 // constant parameters and parameter-related constants
 
