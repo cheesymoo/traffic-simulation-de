@@ -66,6 +66,9 @@ function vehicleDepot(nImgs,nRow,nCol,xDepot,yDepot,lVeh,wVeh,
     if(nImgs<2){console.log("vehicleDepot cstr: warning: useful is",
 		    " an image array of length>=2"); }
     this.veh=[];
+    this.mus = dtm.music();
+    this.data = dtm.data();;
+    //this.mus().mute(true);
     var idmin=50; // see top of this file
     var idminTL=100; // see top of this file
     while(idmin%nImgs!=0){idmin++;}
@@ -146,6 +149,15 @@ vehicleDepot.prototype.draw=function(obstacleImgs,scale,canvas){
 	    ctx.drawImage(obstacleImgs[nr],-0.5*wPix, -0.5*lPix,
 			  wPix, lPix);
 	}
+    }
+}
+
+vehicleDepot.prototype.sonify=function(vol){
+    // we need some goddamn data!
+    var max = 80;
+    var min = 30;
+    if (!isMuted) {
+        //dtm.music().play().for(1/30).note(Math.random() * (max - min) + min);
     }
 }
 

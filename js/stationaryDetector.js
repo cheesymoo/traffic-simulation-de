@@ -49,9 +49,12 @@ stationaryDetector.prototype.update=function(time,dt){
     if(vehNear.id != this.vehNearOld.id){
         // if desired, add single-vehicle data record here
         var panPos = -1 + ((vehNear.lane / this.nLanes) * 2)
+        //var note = dtm.data(vehNear.speed).range(30,70, 0.5, 70);
+        var note = vehNear.speed * 3.7 + 10; // scale this better
+        var len = (3/vehNear.speed)+0.1; // either calculate better, or turn off last note when new car arrives
         var speedData = dtm.data(vehNear.speed);
         if (!isMuted) {
-            dtm.music().play().note(vehNear.speed * 7).pan(panPos).for(3/(vehNear.speed + 0.2));
+            dtm.music().play().note(note).pan(panPos).for(len).amp(env);
             //dtm.music().wave(noise).freq(1).amp(env).play().for(0.2).lpf(this.vehCount/this.dtAggr, this.speedSum/this.vehCount);
         }
 	if(false){

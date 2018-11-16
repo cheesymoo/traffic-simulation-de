@@ -308,7 +308,7 @@ function drawSim() {
  
     var relTextsize_vmin=(isSmartphone) ? 0.03 : 0.02;
     var textsize=relTextsize_vmin*Math.min(canvas.width,canvas.height);
-    console.log("isSmartphone=",isSmartphone);
+    //console.log("isSmartphone=",isSmartphone);
     var hasChanged=false;
 
     if(false){console.log(" new total inner window dimension: ",
@@ -368,6 +368,7 @@ function drawSim() {
 	depot.draw(obstacleImgs,scale,canvas);
     }
 
+    depot.sonify(0.4);
 
     // (6) draw simulated time and detector displays
 
@@ -400,7 +401,6 @@ function drawSim() {
 //##################################################
 
 function main_loop() {
-
     updateSim();
     drawSim();
     userCanvasManip=false;

@@ -109,4 +109,8 @@ vehicle.prototype.isRegularVeh=function(){
     return (this.isPerturbed()||(this.id>=200))&&(this.type !== "obstacle");
 } 
 
-
+vehicle.prototype.sonify=function(){
+    if (!isMuted) {
+        dtm.music().play().for(0.1);
+    }
+}
