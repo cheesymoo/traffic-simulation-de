@@ -41,20 +41,23 @@ function stationaryDetector(road,u,dtAggr){
 	? this.road.findLeaderAt(this.u) : this.road.findFollowerAt(this.u);
 }
 
+var sr = 44100;
 stationaryDetector.prototype.update=function(time,dt){
     var vehNear=(this.u<0.5*this.road.roadLen) 
 	? this.road.findLeaderAt(this.u) : this.road.findFollowerAt(this.u);
     var noise = dtm.random(44100).range(-1, 1);
-    var env = dtm.data(0,0.2,0).line(10,1000);
+    //var env = dtm.data(0,0.2,0).line(10,1000);
     if(vehNear.id != this.vehNearOld.id){
         // if desired, add single-vehicle data record here
         var panPos = -1 + ((vehNear.lane / this.nLanes) * 2)
         //var note = dtm.data(vehNear.speed).range(30,70, 0.5, 70);
         var note = vehNear.speed * 3.7 + 10; // scale this better
-        var len = (3/vehNear.speed)+0.1; // either calculate better, or turn off last note when new car arrives
+        var len = (5/vehNear.speed)+0.01; // either calculate better, or turn off last note when new car arrives
+	var env = dtm.data(0, 0.2, 0.2, 0).line(sr*len/4,sr*len/4,sr*len/4,sr*len/4);
         var speedData = dtm.data(vehNear.speed);
+	var panEnv = dtm.line(len*sr, -1, 1);
         if (!isMuted) {
-            dtm.music().play().note(note).pan(panPos).for(len).amp(env);
+            dtm.music().play().note(note).pan(panEnv).for(len).amp(env);
             //dtm.music().wave(noise).freq(1).amp(env).play().for(0.2).lpf(this.vehCount/this.dtAggr, this.speedSum/this.vehCount);
         }
 	if(false){
